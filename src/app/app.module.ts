@@ -29,7 +29,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { GithubProfileComponent } from './github-profile/github-profile.component';
-import { NotFoundComponent } from './not-found/not-found.component'; 
+import { NotFoundComponent } from './not-found/not-found.component';
+import { AppRoutingModule } from './app-routing.module';
+import { HttpPostComponent } from './http-post/http-post.component'; 
+import { HttpPostService } from '../app/services/http-post.service';
 
 @NgModule({
   declarations: [
@@ -54,19 +57,22 @@ import { NotFoundComponent } from './not-found/not-found.component';
     HomeComponent,
     GithubProfileComponent,
     NotFoundComponent,
+    HttpPostComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule
+    HttpModule,
+    AppRoutingModule
   ],
   providers: [
+    HttpPostService,
     PostService,
     CoursesService,
     AuthorsService,
     GithubFollowersService,
-    { provide: ErrorHandler, useClass: AppErrorHandler }
+    { provide: ErrorHandler, useClass: AppErrorHandler } //replacement regisiter
   ],
   bootstrap: [AppComponent]
 })
